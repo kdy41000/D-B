@@ -22,11 +22,6 @@ public class MemberDaoImpl implements MemberDao{
 		
 		String sql = " SELECT MEM_ID,MEM_PW,MEM_NAME,MEM_GENDER,MEM_ADDR,MEM_PHONE,MEM_EMAIL,MEM_ADDDATE,MEM_ENABLED,MEM_ROLE " 
 				   + " FROM TB_MEMBER "; 
-<<<<<<< HEAD
-		ㅁㅁㅁadasasdaddsadasdaasdadas
-=======
-		ㅁㅁㅁadasasdaddsadasdaasdadadasd
->>>>>>> refs/heads/dy
 		try {
 			pstm = con.prepareStatement(sql);
 			rs = pstm.executeQuery();
