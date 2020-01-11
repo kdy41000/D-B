@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	footer{
+		background:black;
+		height:100px;
+		color:white;
+		margin: 560px 0px 0px 0px;
+	}
+	address{
+		text-align: center;
+		font-weight:bold;
+	}
