@@ -17,7 +17,7 @@
 %>
 	<script type="text/javascript">
 	
-		location.href="boardlist.jsp?currentpage=<%=currentpage%>";
+		location.href="faqlist.jsp?currentpage=<%=currentpage%>";
 	</script>
 </body>
 </html>

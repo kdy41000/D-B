@@ -6,12 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
-    	request.setCharacterEncoding("UTF-8");
-    %>
-<%
-	response.setContentType("text/html; charset=UTF-8");
-%>    
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +19,7 @@
 
 </head>
 <body>
-<%@ include file="../home/header.jsp" %>
+
 <div id="faq">
   <h1>FAQ</h1>
   <ul>
@@ -50,8 +45,9 @@
 </div>
 
 <%
-	int currentpage = Integer.parseInt(request.getParameter("currentpage"));  //1
-	
+	//int currentpage = Integer.parseInt(request.getParameter("currentpage"));  //1
+	int currentpage = Integer.parseInt(request.getParameter("currentpage"));
+	List<BoardDto>totalcnt = (List<BoardDto>)request.getAttribute("list");
 	BoardBiz biz = new BoardBizImpl();
 	PagingDto pagingdto = new PagingDto();
 	
@@ -59,10 +55,12 @@
 	int endseq = currentpage*pagingdto.getColnum();		
 	
 	List<BoardDto>list = biz.selectPaging(startseq,endseq);
-	List<BoardDto>totalcnt = biz.totalcnt();	
+	
 	int totalcount = totalcnt.size();  //게시글 전체 갯수
 	int understartnum = (((currentpage-1)/10)*10)+1; //밑에 페이지 시작번호
 	int underendnum = understartnum+9;   //밑에 페이지 끝번호
+	System.out.println(totalcount);
+	System.out.println(currentpage);
 	
 
 %>
@@ -70,7 +68,7 @@
 <body>
 	<h1>글 목록</h1>
 	
-	<form action="faq.do" method="get">
+	<form action="../faq.do" method="get">
 		<input type="hidden" name="command" value="muldel"/>
 		<table border="1">
 			<col width="30"/>
@@ -101,7 +99,7 @@
 			<td><input type="checkbox" name="chk" value="<%=dto.getBoa_seq()%>"></td>
 			<td><%=dto.getBoa_seq() %></td>
 			<td><%=dto.getMem_id() %></td>
-			<td><a href='controller.do?command=boardone&seq=<%=dto.getMem_id() %>'><%=dto.getBoa_title() %></a></td>
+			<td> <a href='controller.do?command=boardone&seq=<%=dto.getMem_id() %>'><%=dto.getBoa_title() %></a></td>
 			<td><%=dto.getRegdate() %></td>
 			<td><%=dto.getBoa_cnt() %></td>
 		</tr>
@@ -173,6 +171,6 @@
 	
 	
 	</form>
-<%@ include file="../home/footer.jsp" %>
+
 </body>
 </html>

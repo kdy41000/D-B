@@ -29,15 +29,25 @@ public class FaqController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command= request.getParameter("command");
-		int currentpage = Integer.parseInt(request.getParameter("currentpage"));
+		
 		BoardBiz biz = new BoardBizImpl();
+		int currentpage = Integer.parseInt(request.getParameter("currentpage"));
 		
 		if(command.equals("faqlist")) {
-			System.out.println("들어왔따 게시판");
+		
+			//System.out.println("페이ㅣ지 클릭시 들어왔다!!!!");
+			//System.out.println("들어왔따 게시판");
 			List<BoardDto>list = biz.totalcnt();
+			//System.out.println(list+"리스트");
+			//System.out.println(currentpage+"현재페이지");
+	
+			//request.setAttribute("currentpage", currentpage);
 			request.setAttribute("list", list);
-			
-			dispatch("faq/faplist.jsp?currentpage="+currentpage,request,response);
+		
+			//System.out.println("*************"+request.getAttribute("currentpage"));
+			//System.out.println("****************"+request.getAttribute("list"));
+
+			dispatch("faq/faqlist.jsp?currentpage="+currentpage,request,response);
 		}
 	}
 
@@ -45,10 +55,14 @@ public class FaqController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
 		doGet(request, response);
 	}
 	private void dispatch(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(url+"페이지클릭시 들어온번호");
+		System.out.println(request.getParameter("currentpage"));
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
+		System.out.println(url+"페이지클릭시 들어온번호******************");
 		dispatch.forward(request, response);
 	}
 
