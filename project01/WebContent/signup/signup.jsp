@@ -107,7 +107,7 @@ function addrsum(){
 	  type="text/css" />
 </head>
 <body>
-
+<%@ include file="../home/header.jsp" %>
 	<hgroup>
   		<h1>SignUp</h1>
 	</hgroup>
@@ -166,5 +166,6 @@ function addrsum(){
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
   </button>
 </form>
+<%@ include file="../home/footer.jsp" %>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@page import="board.dto.BoardDto"%>
 <%@page import="java.util.List"%>
-<%@page import="board.biz.BoardImpl"%>
+<%@page import="board.biz.BoardBizImpl"%>
 <%@page import="board.biz.BoardBiz"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -20,35 +20,35 @@
 <body>
 	<%
 		String command = request.getParameter("command");   //command=list
-		System.out.println("<"+command+">");
-		
-		BoardBiz biz = new BoardImpl();  //Biz호출
-		
-		if(command.equals("faqlist")){
+			System.out.println("<"+command+">");
 			
-			List<BoardDto>list = biz.selectList();
-			request.setAttribute("list",list);
+			BoardBiz biz = new BoardBizImpl();  //Biz호출
+			
+			if(command.equals("faqlist")){
 		
-			pageContext.forward("faqlist.jsp");    //forward: (데이터를 담아)모든권한을 boardlist.jsp로 넘긴다는 의미
+		List<BoardDto>list = biz.selectList();
+		request.setAttribute("list",list);
 			
-		}else if(command.equals("faqwriteform")){
+		pageContext.forward("faqlist.jsp");    //forward: (데이터를 담아)모든권한을 boardlist.jsp로 넘긴다는 의미
 		
-			response.sendRedirect("faqwrite.jsp");	//sendRedirect : 새로운 페이지를 생성할 때 사용
+			}else if(command.equals("faqwriteform")){
 			
-		}else if(command.equals("faqwriteres")){
-			//1. 받을 데이터가 있는지?x
-			String writer = request.getParameter("writer");
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-			BoardDto dto = new BoardDto();
-			dto.setWriter(writer);
-			dto.setTitle(title);
-			dto.setContent(content);
-			//2. db에서 가져올 데이터가 있는지?x
-			int res = biz.insert(dto);
-			
-			//3. 어디로 갈건지?o
-			if(res > 0){
+		response.sendRedirect("faqwrite.jsp");	//sendRedirect : 새로운 페이지를 생성할 때 사용
+		
+			}else if(command.equals("faqwriteres")){
+		//1. 받을 데이터가 있는지?x
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		BoardDto dto = new BoardDto();
+		dto.setWriter(writer);
+		dto.setTitle(title);
+		dto.setContent(content);
+		//2. db에서 가져올 데이터가 있는지?x
+		int res = biz.insert(dto);
+		
+		//3. 어디로 갈건지?o
+		if(res > 0){
 	%>
 	<script type="text/javascript">
 		alert("새로운 글을 등록 완료하였습니다.");

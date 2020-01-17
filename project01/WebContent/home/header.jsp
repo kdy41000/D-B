@@ -1,6 +1,7 @@
 <%@page import="member.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <%
     	request.setCharacterEncoding("UTF-8");
@@ -20,37 +21,8 @@
 <script type="text/javascript" src="../resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
-
-
-<%
-	MemberDto dto = (MemberDto)session.getAttribute("dto");
-
-	if(dto.getMem_role()=="ADMIN"){
-%>
-	
-<%
-	}else if(dto.getMem_role()=="USER"){
-%>	
-	<script type="text/javascript">
-		alert("고객으로 로그인");
-	</script>
-<%
-	}else{
-%>
-	<script type="text/javascript">
-		$(function(){
-			$(".guest").hide();
-			$(".admin").hide();
-			$(".nonguest").show();
-		});
-	</script>
-<%
-	}
-%>
-
-
 <!-- The content of your page would go here. -->
-<script>
+
 
 	$(document).ready(function(){
 
@@ -91,37 +63,45 @@
 	<div class="header-limiter">
 
 		<h1><a href="#"onclick="location.href='../home/section.jsp'">Company<span>logo</span></a></h1>
+<c:if test="${sessionScope.dto.mem_role == 1}">
 
-			<nav class="admin" style="display:none";>  <!-- 관리자 헤더 -->
+        <!-- sessionScope.dto.getMem_role ==1 -->
+			<nav class="admin">  <!-- 관리자 헤더 -->
 			<a href="#" onclick="location.href='../home/section.jsp'">Home</a>
 			<a href="#" class="selected">Blog</a>
 			<a href="#">Company</a>
 			<a href="#">About</a>
-			<a href="#" onclick="location.href='../faq/faqcontroller.jsp?command=faqlist'">FAQ</a>
+			<a href="#" onclick="location.href='../faq.do?command=faqlist&currentpage=1'">FAQ</a>
 			<a href="#">Contact</a>
-			<a href="#" class="logout" onclick="location.href='../login/login.jsp'">Logout</a>
-			<a href="#" class="adminmain" onclick="location.href='../login/adminmain.jsp'">관리자 회원관리</a>
+			<a href="#" class="logout" onclick="location.href='../login.do?command=logout'">Logout</a>
+			<a href="#" class="adminmain" onclick="location.href='../host.do?command=hostmain&hostname=${sessionScope.dto.mem_name}'">관리자 회원관리</a>
 		</nav>
-		<nav class="guest" style="display:none;">  <!-- 고객 헤더 -->
+</c:if>	
+<c:if test="${sessionScope.dto.mem_role == 2}">
+	<!-- sessionScope.dto.getMem_role ==2 -->
+		<nav class="guest">  <!-- 고객 헤더 -->
 			<a href="#" onclick="location.href='../home/section.jsp'">Home</a>
 			<a href="#" class="selected">Blog</a>
 			<a href="#">Company</a>
 			<a href="#">About</a>
-			<a href="#" onclick="location.href='../faq/faqcontroller.jsp?command=faqlist'">FAQ</a>
+			<a href="#" onclick="location.href='../faq.do?command=faqlist&currentpage=1'">FAQ</a>
 			<a href="#">Contact</a>
-			<a href="#" class="logout" onclick="location.href='../login/login.jsp'">Logout</a>
+			<a href="#" class="logout" onclick="location.href='../login.do?command=logout'">Logout</a>
 		</nav>
+</c:if>		
+<c:if test="${sessionScope.dto.mem_role != 1 and sessionScope.dto.mem_role != 2}">	
+	<!-- sessionScope.dto.getMem_role !=2 && sessionScope.dto.getMem_role !=1-->
 		<nav class="nonguest"> <!-- 비회원 헤더 -->
 			<a href="#" onclick="location.href='../home/section.jsp'">Home</a>
 			<a href="#" class="selected">Blog</a>
 			<a href="#">Company</a>
 			<a href="#">About</a>
-			<a href="#" onclick="location.href='../faq/faqcontroller.jsp?command=faqlist'">FAQ</a>
+			<a href="#" onclick="location.href='../faq.do?command=faqlist&currentpage=1'">FAQ</a>
 			<a href="#">Contact</a>
-			<a href="#" class="login" onclick="location.href='../login/login.jsp'">Login</a>
-			<a href="#" class="signup" onclick="location.href='../signup/signup.jsp'">SignUp</a>
+			<a href="#" class="login" onclick="location.href='../login.do?command=loginform'">Login</a>
+			<a href="#" class="signup" onclick="location.href='../signup.do?command=signup'">SignUp</a>
 		</nav>
-
+</c:if>
 	</div>
 
 </header>

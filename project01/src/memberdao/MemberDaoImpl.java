@@ -259,34 +259,11 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public int deleteUser(MemberDto dto) {  //5.회원탈퇴 : update myenabled = 'n';
-		
-		Connection con = getConnection();
-		PreparedStatement pstm = null;
-		int res = 0;
-		String sql = " UPDATE TB_MEMBER "
-				   + " SET MEM_ENABLED='N' "
-				   + " WHERE MEM_ID = ? AND MEM_PW = ? ";
-		
-		try {
-			pstm = con.prepareStatement(sql);
-			
-			pstm.setString(1, dto.getMem_id());
-			pstm.setString(2, dto.getMem_pw());
-			
-			res = pstm.executeUpdate();
-			
-			if(res > 0) {
-				commit(con);
-			}
-		} catch (SQLException e) {
-			System.out.println("[ERROR]:3 ,4");
-			e.printStackTrace();
-		}finally {
-			close(pstm,con);
-		}
-		
-		return res;
+	public int deleteUser(String id) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
+	
 
 }

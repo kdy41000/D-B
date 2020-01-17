@@ -10,7 +10,10 @@ public interface BoardDao {
 	String SELECT_LIST_SQL =" SELECT BOA_SEQ,MEM_ID,BOA_TITLE,BOA_CONTENT,BOA_CNT,REGDATE,BOA_CATEGORY,BOA_IMAGE "
 						   +" FROM TB_BOARD "
 						   + " ORDER BY BOA_SEQ DESC ";
-
+	String ROWNUM_LIST_SQL = " SELECT BOA_SEQ,MEM_ID,BOA_TITLE,BOA_CONTENT,BOA_CNT,REGDATE,BOA_CATEGORY,BOA_IMAGE "
+							+ " FROM (SELECT ROWNUM AS row_num, tb_board.* FROM TB_BOARD) "
+							+ " WHERE row_num >=? AND row_num <=? ";
+	
 	String SELECT_ONE_SQL = " SELECT BOA_SEQ,MEM_ID,BOA_TITLE,BOA_CONTENT,BOA_CNT,BOA_IMAGE "
 	                      + " FROM TB_BOARD "
 						  + " WHERE BOA_SEQ = ";
@@ -22,8 +25,9 @@ public interface BoardDao {
 						+ " WHERE BOA_SEQ = ? ";
 	
 	String DELETE_SQL = " DELETE FROM TB_BOARD WHERE BOA_SEQ = ? ";
-
-	public List<BoardDto> selectList();
+	
+	public List<BoardDto> totalcnt();
+	public List<BoardDto> selectPaging(int startseq, int endseq);
 	public BoardDto selectOne(int boa_seq);
 	public int insert(BoardDto dto);
 	public int update(BoardDto dto);   //int형 파라미터로 넘어와도 된다.
