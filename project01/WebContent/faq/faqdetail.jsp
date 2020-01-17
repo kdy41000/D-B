@@ -22,22 +22,34 @@
 	
 	<table border="1">
 		<tr>
-			<th>작성자</th>
-			<td><%=dto.getWriter() %></td>
+			<th>번호</th>
+			<td><%=dto.getBoa_seq() %></td>
 		</tr>
 		<tr>
-			<th>제목</th>
-			<td><%=dto.getTitle() %></td>
+			<th>아이디</th>
+			<td><%=dto.getMem_id() %></td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td><%=dto.getBoa_title() %></td>
+		</tr>
+		<tr>
+			<th>작성일</th>
+			<td><%=dto.getRegdate() %></td>
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td><%=dto.getBoa_cnt() %></td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea row="10" cols="60" readonly="readonly"><%=dto.getContent() %></textarea></td>
+			<td><textarea row="10" cols="60" readonly="readonly"><%=dto.getBoa_content() %></textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="button" value="수정" onclick="location.href='faqcontroller.jsp?command=faqupdate&seq=<%=dto.getSeq() %>';"/>
-				<input type="button" value="삭제" onclick="location.href='faqcontroller.jsp?command=faqdelete&seq=<%=dto.getSeq() %>';"/>
-				<input type="button" value="목록" onclick="location.href='faqcontroller.jsp?command=faqlist';"/>
+				<input type="button" value="수정" onclick="location.href='faq.do?command=faqupdate&boa_seq=<%=dto.getBoa_seq() %>';"/>
+				<input type="button" value="삭제" onclick="location.href='faq.do?command=faqdelete&boa_seq=<%=dto.getBoa_seq() %>';"/>
+				<input type="button" value="목록" onclick="location.href='faq.do?command=faqlist&currentpage=1';"/>
 			</td>
 		</tr>
 	</table>

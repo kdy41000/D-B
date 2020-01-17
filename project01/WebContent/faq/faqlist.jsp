@@ -99,7 +99,7 @@
 			<td><input type="checkbox" name="chk" value="<%=dto.getBoa_seq()%>"></td>
 			<td><%=dto.getBoa_seq() %></td>
 			<td><%=dto.getMem_id() %></td>
-			<td> <a href='controller.do?command=boardone&seq=<%=dto.getMem_id() %>'><%=dto.getBoa_title() %></a></td>
+			<td> <a href='faq.do?command=faqdetail&boa_seq=<%=dto.getBoa_seq() %>'><%=dto.getBoa_title() %></a></td>
 			<td><%=dto.getRegdate() %></td>
 			<td><%=dto.getBoa_cnt() %></td>
 		</tr>
@@ -117,12 +117,12 @@
 <%
 	if(1 <=currentpage && currentpage <= 10){  //1~10까지 prev hidden
 %>		
-		<a style="display:none" href="../faq.do?command=faqlist&currentpage=<%=understartnum-1%>">prev</a>
+		<a style="display:none" href="faq.do?command=faqlist&currentpage=<%=understartnum-1%>">prev</a>
 <%
 	}else{   //11~20
 				
 %>
-		<a href="../faq.do?command=faqlist&currentpage=<%=understartnum-1%>">prev</a>
+		<a href="faq.do?command=faqlist&currentpage=<%=understartnum-1%>">prev</a>
 
 <%		
 	}
@@ -138,17 +138,17 @@
 			if(totalcount%10 != 0 && totalcount/10 == i-1){ //게시글 전체가 10단위로 떨어지지 않는데 마지막페이지 찍고 break
 				
 %>
-		 <a href="../faq.do?command=faqlist&currentpage=<%=i%>">콩<%=i %>끝</a> 
+		 <a href="faq.do?command=faqlist&currentpage=<%=i%>">콩<%=i %>끝</a> 
 <% 			
 					break;
 				
 			}else if(totalcount%10 == 0 && totalcount/10 == i ){  //게시글 전체가 10단위로 떨어지는데 마지막페이지 찍고 break
 %>
-			<a href="../faq.do?command=faqlist&currentpage=<%=i%>">콩<%=i %>끝</a> 
+			<a href="faq.do?command=faqlist&currentpage=<%=i%>">콩<%=i %>끝</a> 
 <%					break;
 			}else{    //페이지 prev 1~10 next, prev 11~20 next, prev 21~30 next
 %>				
-			<a href="../faq.do?command=faqlist&currentpage=<%=i%>"><%=i %></a>
+			<a href="faq.do?command=faqlist&&currentpage=<%=i%>"><%=i %></a>
 <%			
 			}
 		}		
@@ -158,12 +158,12 @@
 				
 				
 %>
-	<a style="display:none" href="../faq.do?command=faqlist&currentpage=<%=underendnum+1 %>">next</a>
+	<a style="display:none" href="faq.do?command=faqlist&currentpage=<%=underendnum+1 %>">next</a>
 <%					
 				
 			}else{
 %>
-	<a href="../faq.do?command=faqlist&currentpage=<%=underendnum+1%>">next</a>
+	<a href="faq.do?command=faqlist&currentpage=<%=underendnum+1%>">next</a>
 <%			
 		}
 	%>
