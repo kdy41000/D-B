@@ -51,11 +51,11 @@ $(window, document, undefined).ready(function() {
 	  type="text/css" />
 </head>
 <body>
-
+<%@ include file="../home/header.jsp" %>
 	<hgroup>
   		<h1>Login</h1>
 	</hgroup>
-<form action="logincontroller.jsp" method="post">
+<form action="../login.do" method="post">
   <input type="hidden" name="command" value="login"/>
   <div class="group">
     <input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
@@ -70,6 +70,6 @@ $(window, document, undefined).ready(function() {
   </button>
 </form>
 <input type="button" id="signup" onclick="location.href='../signup/signup.jsp'"value="SignUp"/>
-
+<%@ include file="../home/footer.jsp" %>
 </body>
 </html>

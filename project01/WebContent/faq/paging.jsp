@@ -8,14 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-	$(function(){
-		location.href="home.do?command=homesection";
-	});
-</script>
 </head>
 <body>
-TESTGIT HUB"안녕ㄴ"ㅁㅇㅁㅇㅁ
+<%
+	int currentpage = Integer.parseInt(request.getParameter("currentpage"));
+
+	
+%>
+	<script type="text/javascript">
+	
+		location.href="boardlist.jsp?currentpage=<%=currentpage%>";
+	</script>
 </body>
 </html>

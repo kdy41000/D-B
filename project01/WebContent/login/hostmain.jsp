@@ -23,16 +23,17 @@
 <title>Insert title here</title>
 </head>
 <%
-	MemberDto dto = (MemberDto)session.getAttribute("dto");
+	MemberDto dto = (MemberDto)session.getAttribute("hostname");
 	
 	if(dto==null){    //로그아웃 후 앞으로 가기 눌렀을 시 현재화면 에러경로 변경
 		pageContext.forward("login.jsp");
 	}
 %>
+
 <body>
 
-	<h1><%=dto.getName() %>님, 환영합니다.<a href="logincontroller.jsp?command=logout">logout</a></h1>
-	<h3>등급 : <%=dto.getRole() %></h3>
+	<h1><%=dto.getMem_name() %>님, 환영합니다.<a href="logincontroller.jsp?command=logout">logout</a></h1>
+	<h3>등급 : </h3>
 	
 	<div>
 		<div>
