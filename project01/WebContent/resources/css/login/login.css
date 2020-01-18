@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
 	* { box-sizing:border-box; }
-
+section{
+	height: 700px;
+}
 body {
 	font-family: Helvetica;
 	background: #eee;

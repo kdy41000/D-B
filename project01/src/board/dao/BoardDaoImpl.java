@@ -238,6 +238,32 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return (res==boa_seqs.length)?true:false;   //삼항연산자 사용
 	}
+	@Override
+	public int cntplus(int boa_seq, int boa_cnt) {  //조회수 카운트
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		int cntcount = boa_cnt+1;
+		System.out.println(cntcount+"보아씨엔티+1한거");
+		System.out.println(boa_cnt+"다오임플");
+		try {
+			pstm = con.prepareStatement(CNTPLUS_SQL);
+			pstm.setInt(1, cntcount);
+			pstm.setInt(2, boa_seq);
+			
+			res = pstm.executeUpdate();
+			System.out.println(res+"********");
+			if(res > 0) {
+				commit(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("[ERROR]: 3,4");
+			e.printStackTrace();
+		}finally {
+			close(pstm,con);
+		}
+		return res;
+	}
 
 	
 }

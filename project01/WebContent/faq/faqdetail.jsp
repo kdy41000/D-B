@@ -18,9 +18,21 @@
 	BoardDto dto = (BoardDto)request.getAttribute("dto");
 %>
 <body>
-	<h1>Detail</h1>
+<%@ include file="../home/header.jsp" %>
+<section>
+		<div class="row">
+  <div id="man" class="col s12">
+    <div class="card material-table">
+      <div class="table-header">
+        <span class="table-title">FAQDetail</span>
+        <div class="actions">
+          <a href="#addClientes" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">person_add</i></a>
+          <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+        </div>
+      </div>
 	
-	<table border="1">
+	 <table border="1">
+	
 		<tr>
 			<th>번호</th>
 			<td><%=dto.getBoa_seq() %></td>
@@ -53,5 +65,7 @@
 			</td>
 		</tr>
 	</table>
+</section>
+<%@ include file="../home/footer.jsp" %>	
 </body>
 </html>

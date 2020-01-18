@@ -51,6 +51,12 @@ public class BoardBizImpl implements BoardBiz{
 		return dao.multiDelete(boa_seqs);
 	}
 
+	@Override
+	public int cntplus(int boa_seq, int boa_cnt) {
+	
+		return dao.cntplus(boa_seq, boa_cnt);
+	}
+
 
 	
 }

@@ -71,8 +71,8 @@
 			<a href="#" class="selected">Blog</a>
 			<a href="#">Company</a>
 			<a href="#">About</a>
-			<a href="#" onclick="location.href='faq.do?command=faqlist&currentpage=1'">FAQ</a>
-			<a href="#">Contact</a>
+			<a href="#" onclick="location.href='../faq.do?command=faqlist&currentpage=1'">FAQ</a>
+			<a href="#" onclick="location.href='../contact.do?command=contact'">Contact</a>
 			<a href="#" class="logout" onclick="location.href='../login.do?command=logout'">Logout</a>
 			<a href="#" class="adminmain" onclick="location.href='../host.do?command=hostmain&hostname=${sessionScope.dto.mem_name}'">관리자 회원관리</a>
 		</nav>
@@ -85,7 +85,7 @@
 			<a href="#">Company</a>
 			<a href="#">About</a>
 			<a href="#" onclick="location.href='../faq.do?command=faqlist&currentpage=1'">FAQ</a>
-			<a href="#">Contact</a>
+			<a href="#" onclick="location.href='../contact.do?command=contact'">Contact</a>
 			<a href="#" class="logout" onclick="location.href='../login.do?command=logout'">Logout</a>
 		</nav>
 </c:if>		
@@ -97,7 +97,7 @@
 			<a href="#">Company</a>
 			<a href="#">About</a>
 			<a href="#" onclick="location.href='../faq.do?command=faqlist&currentpage=1'">FAQ</a>
-			<a href="#">Contact</a>
+			<a href="#" onclick="location.href='../contact.do?command=contact'">Contact</a>
 			<a href="#" class="login" onclick="location.href='../login.do?command=loginform'">Login</a>
 			<a href="#" class="signup" onclick="location.href='../signup.do?command=signup'">SignUp</a>
 		</nav>

@@ -26,6 +26,9 @@ public interface BoardDao {
 	
 	String DELETE_SQL = " DELETE FROM TB_BOARD WHERE BOA_SEQ = ? ";
 	
+	String CNTPLUS_SQL = " UPDATE TB_BOARD "
+			           + " SET BOA_CNT = ? "
+			           + " WHERE BOA_SEQ =? "; 
 	public List<BoardDto> totalcnt();
 	public List<BoardDto> selectPaging(int startseq, int endseq);
 	public BoardDto selectOne(int boa_seq);
@@ -33,4 +36,5 @@ public interface BoardDao {
 	public int update(BoardDto dto);   //int형 파라미터로 넘어와도 된다.
 	public int delete(int boa_seq);
 	public boolean multiDelete(String[] boa_seqs);   //DELETE 쿼리를 배열형태로 활용
+	public int cntplus(int boa_seq, int boa_cnt);
 }

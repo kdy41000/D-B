@@ -52,6 +52,7 @@ $(window, document, undefined).ready(function() {
 </head>
 <body>
 <%@ include file="../home/header.jsp" %>
+<section>
 	<hgroup>
   		<h1>Login</h1>
 	</hgroup>
@@ -70,6 +71,7 @@ $(window, document, undefined).ready(function() {
   </button>
 </form>
 <input type="button" id="signup" onclick="location.href='../signup/signup.jsp'"value="SignUp"/>
+</section>
 <%@ include file="../home/footer.jsp" %>
 </body>
 </html>

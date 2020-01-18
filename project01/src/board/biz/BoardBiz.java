@@ -13,7 +13,7 @@ public interface BoardBiz {
 		public int update(BoardDto dto);     //글수정
 		public int delete(int boa_seq);        //글삭제
 		public boolean multiDelete(String[] boa_seqs);  //체크박스 삭제
-
+		public int cntplus(int boa_seq, int boa_cnt);
 	
 
 }
