@@ -46,7 +46,7 @@
 <body>
 
 <section>
-<%@ include file="../home/header.jsp" %>
+<%@ include page="../home/header.jsp" %>
 	<div class="row">
   <div id="man" class="col s12">
     <div class="card material-table">
